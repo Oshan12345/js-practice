@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+
+    <title>stop watch</title>
+  </head>
+  <body>
+    <section class="container mt-5">
+      <div class="m-auto w-25">
+        <p class="mt-5">
+          <span id="hour">00</span>:<span id="minutes">0</span>:<span
+            id="second"
+            >0</span
+          >
+        </p>
+
+        <div>
+          <button id="btn-start" class="btn btn-info m-3">Start</button>
+          <button id="btn-pause " class="btn btn-warning m-3" onclick="reset()">
+            Reset
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      function timeCount(isTrue = false, option) {
+        let x = document.getElementById("btn-start");
+        if (isTrue === true && option == "Pause") {
+          let minutes = parseInt(document.getElementById("minutes").innerText);
+
+          let second = document.getElementById("second").innerText;
+          if (second == 59) {
+            minutes++;
+            document.getElementById("minutes").innerText = minutes;
+            second = -1;
+            document.getElementById("second").innerText = second;
+          }
+          second = parseInt(second);
+          let secondsCount = second + 1;
+          document.getElementById("second").innerText = secondsCount;
+          setTimeout(() => {
+            return timeCount(isTrue, x.innerText);
+          }, 1000);
+        }
+      }
+
+      let btnStart = document.getElementById("btn-start");
+
+      btnStart.addEventListener("click", function () {
+        let x = document.getElementById("btn-start");
+        if (x.innerText == "Start") {
+          timeCount(true, "Pause");
+          x.innerText = "Pause";
+        } else if (x.innerText == "Pause") {
+          x.innerText = "Start";
+        }
+      });
+
+      function reset(isReset) {
+        document.getElementById("minutes").innerText = 0;
+
+        document.getElementById("second").innerText = 0;
+        document.getElementById("btn-start").innerText = "Start";
+        timeCount();
+      }
+    </script>
+  </body>
+</html>
