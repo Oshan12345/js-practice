@@ -16,8 +16,7 @@
     <section class="container mt-5">
       <div class="m-auto w-25">
         <p class="mt-5">
-          <span id="hour">00</span>:<span id="minutes">0</span>:<span
-            id="second"
+          <span id="hour">0</span>:<span id="minutes">0</span>:<span id="second"
             >0</span
           >
         </p>
@@ -43,7 +42,9 @@
           let minutes = parseInt(document.getElementById("minutes").innerText);
 
           let second = document.getElementById("second").innerText;
+
           if (second == 59) {
+            //the logic is when second is equal to 59, 1 minutes is counted, then second will be -1, then later 1 will be added with -1, that is(-1+1=0). thats how after 59 second will be 0.
             minutes++;
             document.getElementById("minutes").innerText = minutes;
             second = -1;
