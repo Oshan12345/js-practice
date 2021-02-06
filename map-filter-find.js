@@ -29,3 +29,38 @@ console.log(result);
 const result2 = number.find((x) => x > 5);
 console.log(result2);
 //find will provide first value
+
+//finding out
+const inventory = [
+  [
+    { name: "guava", quantity: 2 },
+    { name: "jackfruits", quantity: 0 },
+    { name: "lichi", quantity: 5 },
+  ],
+  [
+    { name: "ban", quantity: 2 },
+    { name: "coke", quantity: 0 },
+    { name: "fanta", quantity: 5 },
+  ],
+  [
+    { name: "apples", quantity: 2 },
+    { name: "bananas", quantity: 0 },
+    { name: "cherries", quantity: 5 },
+  ],
+];
+
+function findElem(params) {
+  var y;
+
+  var x = params.map((element) => {
+    const result = element.find(({ name }) => name === "cherries");
+    if (result != undefined) {
+      y = result;
+    }
+  });
+  return y;
+}
+
+var result = findElem(inventory);
+
+console.log("ss", result);
